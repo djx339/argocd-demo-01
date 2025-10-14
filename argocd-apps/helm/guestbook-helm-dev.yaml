@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-helm-dev
+  namespace: argocd
+spec:
+  project: default
+  
+  source:
+    repoURL: https://github.com/djx339/argocd-demo-01
+    targetRevision: HEAD
+    path: helm-charts/guestbook-chart
+    helm:
+      valueFiles:
+        - ../values/values-dev.yaml
+      # 如果需要多个 values 文件:
+      # valueFiles:
+      #   - values.yaml  # 默认会自动包含
+      #   - ../values/common.yaml
+      #   - ../values/values-dev.yaml
+      
+      # 或者直接覆盖参数:
+      # parameters:
+      #   - name: replicaCount
+      #     value: "2"
+  
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: helm-dev
+  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
