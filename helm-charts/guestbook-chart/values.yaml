@@ -12,3 +12,6 @@ service:
 resources: {}
 
 environment: default
+
+ingress:
+  enabled: false
