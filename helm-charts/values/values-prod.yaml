@@ -1,0 +1,13 @@
+replicaCount: 3
+environment: prod
+
+image:
+  tag: "1.27-alpine"  # Prod 可以锁定版本
+
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "200m"
+  limits:
+    memory: "256Mi"
+    cpu: "400m"
