@@ -1,0 +1,5 @@
+# Helm dependencies
+helm-charts/*/charts/
+
+# Helm 临时文件
+*.tgz
