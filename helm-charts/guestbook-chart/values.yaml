@@ -15,3 +15,8 @@ environment: default
 
 ingress:
   enabled: false
+
+database:
+  enableMigration: false
+  migrationImage: "busybox:1.36"
+  secretName: ""

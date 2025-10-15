@@ -8,3 +8,9 @@ resources:
   limits:
     memory: "64Mi"
     cpu: "100m"
+
+database:
+  enableMigration: true
+  migrationImage: "busybox:1.36"
+  # 在实际场景中,这里会引用 External Secret
+  # secretName: "db-credentials-dev"
