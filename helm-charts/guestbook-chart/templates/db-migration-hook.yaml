@@ -23,8 +23,11 @@ spec:
           - sh
           - -c
           - |
-            echo "Migration failed!"
-            exit 1  # 失败退出码
+            echo "Running database migration for {{ .Values.environment }} environment..."
+            sleep 5
+            echo "Migration completed successfully!"
+            # 实际场景中这里会执行真正的迁移脚本
+            # 例如: flyway migrate 或 liquibase update
       {{- if .Values.database.secretName }}
         env:
         - name: DB_PASSWORD
